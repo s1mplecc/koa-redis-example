@@ -3,8 +3,8 @@ const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
-const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
+const onError = require('koa-onerror')
+const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const mongo = require('./config/mongo')
 
@@ -12,10 +12,10 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 
 // error handler
-onerror(app)
+onError(app)
 
 // middlewares
-app.use(bodyparser({
+app.use(bodyParser({
   enableTypes: ['json', 'form', 'text']
 }))
 app.use(json())
@@ -26,9 +26,11 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+// connect to mongoDB
 app.init = async () => {
   await mongo.connect()
 }
+app.init()
 
 // logger
 app.use(async (ctx, next) => {
@@ -36,9 +38,8 @@ app.use(async (ctx, next) => {
   await next()
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
 
-app.init()
+})
 
 // routes
 app.use(index.routes(), index.allowedMethods())
