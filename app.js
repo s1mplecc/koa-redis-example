@@ -1,11 +1,12 @@
 const Koa = require('koa')
 
-const app = new Koa();
+const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const mongo = require('./config/mongo')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -25,6 +26,10 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+app.init = async () => {
+  await mongo.connect()
+}
+
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
@@ -32,6 +37,8 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+app.init()
 
 // routes
 app.use(index.routes(), index.allowedMethods())

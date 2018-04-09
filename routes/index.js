@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+const mongo = require('../config/mongo')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
@@ -11,9 +12,8 @@ router.get('/string', async (ctx, next) => {
 })
 
 router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
+  const a = await mongo.category.findOne({})
+  ctx.body = a
 })
 
 module.exports = router
