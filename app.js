@@ -8,8 +8,8 @@ const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const mongo = require('./config/mongo')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
+const index = require('./controllers/condition')
+const users = require('./controllers/users')
 
 // error handler
 onError(app)
@@ -38,10 +38,9 @@ app.use(async (ctx, next) => {
   await next()
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-
 })
 
-// routes
+// controllers
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
