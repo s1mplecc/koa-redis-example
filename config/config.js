@@ -27,10 +27,10 @@ const platformConfig = {
 
   test: {
     app: {
-      port: 3001
+      port: 3000
     },
     mongo: {
-      url: 'mongodb://localhost:27017/koan-test'
+      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     }
   },
 

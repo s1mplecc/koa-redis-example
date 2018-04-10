@@ -9,11 +9,7 @@ const logger = require('koa-logger')
 const cors = require('koa-cors')
 const mongo = require('./config/mongo')
 
-const condition = require('./controllers/condition')
-const treeData = require('./controllers/treeData')
-const report = require('./controllers/report')
-const health = require('./controllers/health')
-const users = require('./controllers/users')
+const controllers = require('./controllers')
 
 // error handler
 onError(app)
@@ -46,11 +42,9 @@ app.use(async (ctx, next) => {
 })
 
 // controllers
-app.use(condition.routes(), condition.allowedMethods())
-app.use(treeData.routes(), treeData.allowedMethods())
-app.use(report.routes(), report.allowedMethods())
-app.use(health.routes(), health.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+controllers.forEach((controller) => {
+	app.use(controller.routes(), controller.allowedMethods())
+})
 
 // error-handling
 app.on('error', (err, ctx) => {
