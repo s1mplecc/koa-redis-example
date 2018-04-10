@@ -7,7 +7,7 @@ const CATEGORY_TYPE = { REPORT: 'REPORT', DATA: 'DATA' }
 /**
  * Get Tree Data of Report Module
  */
-const getReportTreeData = async (ctx, next) => {
+const getReportTreeData = async (ctx) => {
   ctx.body = await db.category.find(
     {
       level: HIGHEST_LEVEL, type: CATEGORY_TYPE.REPORT

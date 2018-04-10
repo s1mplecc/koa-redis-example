@@ -6,7 +6,7 @@ const _ = require('lodash')
 /**
  * Add a user's Customized Condition
  */
-const insertCustomizedCondition = async (ctx, next) => {
+const insertCustomizedCondition = async (ctx) => {
   const request = JSON.parse(ctx.request.body)
   const newCustomizedCondition = {
     ...request.customizedCondition,
@@ -23,7 +23,7 @@ const insertCustomizedCondition = async (ctx, next) => {
 /**
  * Update a user's customized condition, already exists
  */
-const updateCustomizedCondition = async (ctx, next) => {
+const updateCustomizedCondition = async (ctx) => {
   const request = JSON.parse(ctx.request.body)
   const newCustomizedCondition = {
     ...request.customizedCondition,
@@ -41,7 +41,7 @@ const updateCustomizedCondition = async (ctx, next) => {
  * contains standard conditions & user's customized conditions
  */
 // todo createdUser => userId
-const listReportConditions = async (ctx, next) => {
+const listReportConditions = async (ctx) => {
   const { reportId, userId } = ctx.params
   const report = await db.report.findOne({ reportId })
   ctx.body = {

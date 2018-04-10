@@ -4,7 +4,7 @@ const db = require('../config/mongo')
 /**
  * Get all reports
  */
-const getReports = async (ctx, next) => {
+const getReports = async (ctx) => {
   ctx.body = await db.report.find(
     {},
     {
