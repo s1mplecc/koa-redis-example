@@ -11,6 +11,7 @@ const mongo = require('./config/mongo')
 const condition = require('./controllers/condition')
 const treeData = require('./controllers/treeData')
 const report = require('./controllers/report')
+const health = require('./controllers/health')
 const users = require('./controllers/users')
 
 // error handler
@@ -46,6 +47,7 @@ app.use(async (ctx, next) => {
 app.use(condition.routes(), condition.allowedMethods())
 app.use(treeData.routes(), treeData.allowedMethods())
 app.use(report.routes(), report.allowedMethods())
+app.use(health.routes(), health.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 // error-handling
