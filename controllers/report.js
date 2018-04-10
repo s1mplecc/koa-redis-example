@@ -5,7 +5,7 @@ const getReports = async (ctx, next) => {
   ctx.body = await db.report.find(
     {},
     {
-      _id: 0, reportId: 1, reportName: 1, wideTableName: 1, available: 1
+      _id: 0, reportId: 1, reportName: 1, wideTableName: 1, categoryId: 1, available: 1
     }
   ).toArray()
 }
