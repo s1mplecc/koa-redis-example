@@ -1,6 +1,9 @@
 const router = require('koa-router')()
 const db = require('../config/mongo')
 
+/**
+ * Get all reports
+ */
 const getReports = async (ctx, next) => {
   ctx.body = await db.report.find(
     {},
@@ -10,9 +13,6 @@ const getReports = async (ctx, next) => {
   ).toArray()
 }
 
-/**
- * Get all reports
- */
 router.get('/reports', getReports)
 
 module.exports = router

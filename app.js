@@ -43,7 +43,7 @@ app.use(async (ctx, next) => {
 
 // controllers
 controllers.forEach((controller) => {
-	app.use(controller.routes(), controller.allowedMethods())
+  app.use(controller.routes(), controller.allowedMethods())
 })
 
 // error-handling

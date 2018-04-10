@@ -4,6 +4,9 @@ const db = require('../config/mongo')
 const HIGHEST_LEVEL = 1
 const CATEGORY_TYPE = { REPORT: 'REPORT', DATA: 'DATA' }
 
+/**
+ * Get Tree Data of Report Module
+ */
 const getReportTreeData = async (ctx, next) => {
   ctx.body = await db.category.find(
     {
@@ -15,9 +18,6 @@ const getReportTreeData = async (ctx, next) => {
   ).toArray()
 }
 
-/**
- * Get Tree Data of Report Module
- */
 router.get('/report/tree-data', getReportTreeData)
 
 module.exports = router

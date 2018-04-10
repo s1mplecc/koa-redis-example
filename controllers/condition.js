@@ -3,6 +3,9 @@ const db = require('../config/mongo')
 const UUID = require('uuid-js')
 const _ = require('lodash')
 
+/**
+ * Add a user's Customized Condition
+ */
 const insertCustomizedCondition = async (ctx, next) => {
   const request = JSON.parse(ctx.request.body)
   const newCustomizedCondition = {
@@ -17,6 +20,9 @@ const insertCustomizedCondition = async (ctx, next) => {
   )
 }
 
+/**
+ * Update a user's customized condition, already exists
+ */
 const updateCustomizedCondition = async (ctx, next) => {
   const request = JSON.parse(ctx.request.body)
   const newCustomizedCondition = {
@@ -29,6 +35,11 @@ const updateCustomizedCondition = async (ctx, next) => {
   )
 }
 
+
+/**
+ * List the filter conditions for a report,
+ * contains standard conditions & user's customized conditions
+ */
 // todo createdUser => userId
 const listReportConditions = async (ctx, next) => {
   const { reportId, userId } = ctx.params
@@ -39,20 +50,8 @@ const listReportConditions = async (ctx, next) => {
   }
 }
 
-/**
- * Add a user's Customized Condition
- */
 router.post('/report/customized-condition', insertCustomizedCondition)
-
-/**
- * Update a user's customized condition, already exists
- */
 router.put('/report/customized-condition', updateCustomizedCondition)
-
-/**
- * List the filter conditions for a report,
- * contains standard conditions & user's customized conditions
- */
 router.get('/report/conditions/:reportId/:userId', listReportConditions)
 
 module.exports = router

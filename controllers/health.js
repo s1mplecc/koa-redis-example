@@ -1,6 +1,8 @@
 const router = require('koa-router')()
 
-// health check
+/**
+ * Health check for Sidecar
+ */
 router.get('/health', async (ctx, next) => {
   ctx.body = {
     status: 'UP'
