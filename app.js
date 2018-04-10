@@ -6,6 +6,7 @@ const json = require('koa-json')
 const onError = require('koa-onerror')
 const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const cors = require('koa-cors')
 const mongo = require('./config/mongo')
 
 const condition = require('./controllers/condition')
@@ -18,6 +19,7 @@ const users = require('./controllers/users')
 onError(app)
 
 // middlewares
+app.use(cors())
 app.use(bodyParser({
   enableTypes: ['json', 'form', 'text']
 }))

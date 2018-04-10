@@ -21,7 +21,7 @@ const platformConfig = {
       port: 3000
     },
     mongo: {
-      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
+      url: 'mongodb://bigdata:bigdata_123@localhost/bigdata'
     }
   },
 
