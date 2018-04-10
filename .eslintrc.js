@@ -13,6 +13,7 @@ module.exports = {
     // disallow trailing semi
     'semi': ['error', 'never'],
     // allow the unary operators ++ and --
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
+    'max-len': [0, 150]
   }
 }

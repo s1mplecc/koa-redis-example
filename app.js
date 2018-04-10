@@ -8,7 +8,8 @@ const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const mongo = require('./config/mongo')
 
-const index = require('./controllers/condition')
+const condition = require('./controllers/condition')
+const treeData = require('./controllers/treeData')
 const users = require('./controllers/users')
 
 // error handler
@@ -41,7 +42,8 @@ app.use(async (ctx, next) => {
 })
 
 // controllers
-app.use(index.routes(), index.allowedMethods())
+app.use(condition.routes(), condition.allowedMethods())
+app.use(treeData.routes(), treeData.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 // error-handling
