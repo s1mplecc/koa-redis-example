@@ -7,7 +7,7 @@ const _ = require('lodash')
  * Add a user's Customized Condition
  */
 const insertCustomizedCondition = async (ctx) => {
-  const request = JSON.parse(ctx.request.body)
+  const request = ctx.request.body
   const newCustomizedCondition = {
     ...request.customizedCondition,
     conditionId: UUID.create().toString(),
@@ -24,7 +24,8 @@ const insertCustomizedCondition = async (ctx) => {
  * Update a user's customized condition, already exists
  */
 const updateCustomizedCondition = async (ctx) => {
-  const request = JSON.parse(ctx.request.body)
+  const request = ctx.request.body
+  console.log('request', request)
   const newCustomizedCondition = {
     ...request.customizedCondition,
     updateTime: new Date()
