@@ -13,7 +13,7 @@ const getReportTreeData = async (ctx) => {
       level: HIGHEST_LEVEL, type: CATEGORY_TYPE.REPORT
     },
     {
-      _id: 0, categoryId: 1, categoryName: 1, 'subCategories.categoryName': 1, 'subCategories.categoryId': 1
+      _id: 0, categoryId: 1, categoryName: 1, subCategories: 1
     }
   ).toArray()
 }
