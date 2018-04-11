@@ -51,8 +51,21 @@ const listReportConditions = async (ctx) => {
   }
 }
 
+/**
+ * Delete a user's customized condition
+ */
+const deleteReportCondition = async (ctx) => {
+  const { reportId, conditionId } = ctx.params
+  await db.report.findOneAndUpdate(
+    { reportId },
+    { $pull: { customizedConditions: { conditionId } } }
+  )
+  ctx.body = 'ok'
+}
+
 router.post('/report/customized-condition', insertCustomizedCondition)
 router.put('/report/customized-condition', updateCustomizedCondition)
 router.get('/report/conditions/:reportId/:userId', listReportConditions)
+router.delete('/report/:reportId/conditions/:conditionId', deleteReportCondition)
 
 module.exports = router
