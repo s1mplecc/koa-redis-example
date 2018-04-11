@@ -10,7 +10,7 @@ const getReports = async (ctx) => {
     {
       _id: 0, reportId: 1, reportName: 1, wideTableName: 1, categoryId: 1, available: 1
     }
-  ).toArray()
+  ).sort({ reportOrder: 1 }).toArray()
 }
 
 router.get('/reports', getReports)
