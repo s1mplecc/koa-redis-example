@@ -14,6 +14,7 @@ module.exports = {
     'semi': ['error', 'never'],
     // allow the unary operators ++ and --
     'no-plusplus': 'off',
+    // enforce a maximum line length
     'max-len': [0, 150]
   }
 }
