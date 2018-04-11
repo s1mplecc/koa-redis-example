@@ -2,8 +2,8 @@ const Koa = require('koa')
 
 const app = new Koa()
 const json = require('koa-json')
-const onError = require('koa-onerror')
-const bodyParser = require('koa-bodyparser')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa-cors')
 const mongo = require('./config/mongo')
@@ -11,11 +11,11 @@ const mongo = require('./config/mongo')
 const controllers = require('./controllers')
 
 // error handler
-onError(app)
+onerror(app)
 
 // middlewares
 app.use(cors())
-app.use(bodyParser({
+app.use(bodyparser({
   enableTypes: ['json', 'form', 'text']
 }))
 app.use(json())
