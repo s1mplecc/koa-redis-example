@@ -18,6 +18,21 @@ const getReportTreeData = async (ctx) => {
   ).toArray()
 }
 
+/**
+ * Get Tree Data of Data Module
+ */
+const getDataTreeData = async (ctx) => {
+  ctx.body = await db.category.find(
+    {
+      level: HIGHEST_LEVEL, type: CATEGORY_TYPE.DATA
+    },
+    {
+      _id: 0, categoryId: 1, categoryName: 1, subCategories: 1
+    }
+  ).toArray()
+}
+
 router.get('/report/tree-data', getReportTreeData)
+router.get('/data/tree-data', getDataTreeData)
 
 module.exports = router
