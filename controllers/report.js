@@ -1,16 +1,28 @@
 const router = require('koa-router')()
 const db = require('../config/mongo')
+const _ = require('lodash')
 
 /**
  * Get all reports
  */
 const getReports = async (ctx) => {
-  ctx.body = await db.report.find(
+  const reports = await db.report.find(
     {},
     {
-      _id: 0, reportId: 1, reportName: 1, wideTableName: 1, categoryId: 1, available: 1
+      _id: 0,
+      reportId: 1,
+      reportName: 1,
+      wideTableName: 1,
+      categoryId: 1,
+      available: 1,
+      standardConditions: 1
     }
   ).sort({ reportOrder: 1 }).toArray()
+  ctx.body = _.map(reports, (report) => {
+    const filters = _.get(report, ['standardConditions', 0, 'filters'])
+    const filterNames = _.map(filters, 'filterName')
+    return _.omit({ ...report, filterNames }, 'standardConditions')
+  })
 }
 
 /**
