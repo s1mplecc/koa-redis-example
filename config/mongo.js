@@ -23,5 +23,6 @@ mongodb.connect = async () => {
 
   // export default collections
   mongodb.report = db.collection('bi_report')
+  mongodb.dataReport = db.collection('bi_data')
   mongodb.category = db.collection('bi_category')
 }
