@@ -21,7 +21,9 @@ const getReports = async (ctx) => {
   ctx.body = _.map(reports, (report) => {
     const filters = _.get(report, ['standardConditions', 0, 'filters'])
     const filterNames = _.map(filters, 'filterName')
-    return _.omit({ ...report, filterNames }, 'standardConditions')
+    const dateFilters = _.get(report, ['standardConditions', 0, 'dateFilters'])
+    const dateFilterNames = _.map(dateFilters, 'fieldName')
+    return _.omit({ ...report, filterNames, dateFilterNames }, 'standardConditions')
   })
 }
 
