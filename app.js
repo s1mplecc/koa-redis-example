@@ -21,7 +21,7 @@ app.use(bodyparser({
 app.use(json({}))
 app.use(logger())
 
-// connect to mongoDB
+// connect to database
 app.init = async () => {
   await mongo.connect()
 }

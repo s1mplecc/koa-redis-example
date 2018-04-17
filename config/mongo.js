@@ -22,7 +22,5 @@ mongodb.connect = async () => {
   const db = await connect(config.mongo.url)
 
   // export default collections
-  mongodb.report = db.collection('bi_report')
-  mongodb.dataReport = db.collection('bi_data')
-  mongodb.category = db.collection('bi_category')
+  mongodb.user = db.collection('bi_user')
 }

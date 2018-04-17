@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
+    "start": "node bin/auth",
+    "dev": "./node_modules/.bin/nodemon bin/auth",
+    "prd": "pm2 start bin/auth",
     "lint": "eslint --ext .js .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
     "lodash": "^4.17.5",
     "mongodb": "^2.2.33",
     "npm": "^5.8.0",
+    "redis": "^2.8.0",
     "uuid-js": "^0.7.5"
   },
   "devDependencies": {
