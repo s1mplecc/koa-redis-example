@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 
 /**
  * Check user login & generate access_token
- * set token and userId hash to redis
+ * set token -> userId hash to redis
  * @code {String} hash: the data encrypted with salt
  */
 const login = async (ctx) => {
@@ -22,6 +22,17 @@ const login = async (ctx) => {
   }
 }
 
+/**
+ * User logout, delete token -> userId from redis
+ */
+const logout = async (ctx) => {
+  const token = ctx.request.header.authorization
+  console.log('token', token)
+  await client.hdel('access_token', token)
+  ctx.body = 'ok'
+}
+
 router.post('/login', login)
+router.delete('/logout', logout)
 
 module.exports = router
