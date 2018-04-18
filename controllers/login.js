@@ -17,8 +17,10 @@ const login = async (ctx) => {
   ctx.assert(hash === user.password, '401', 'Incorrect password!')
   const token = UUID.create().toString()
   await client.hmset('access_token', token, user.userId)
+  const { email, userId } = user
   ctx.body = {
-    access_token: token
+    access_token: token,
+    userProfile: { username, email, userId }
   }
 }
 
