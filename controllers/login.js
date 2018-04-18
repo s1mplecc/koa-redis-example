@@ -2,7 +2,7 @@ const router = require('koa-router')()
 const db = require('../config/mongo')
 const client = require('../config/redis')
 const UUID = require('uuid-js')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 /**
  * Check user login & generate access_token

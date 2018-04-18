@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const db = require('../config/mongo')
 const UUID = require('uuid-js')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const _ = require('lodash')
 
 const saltRounds = 10
