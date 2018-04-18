@@ -12,6 +12,7 @@ const bcrypt = require('bcrypt')
 const login = async (ctx) => {
   const { username, password } = ctx.request.body
   const user = await db.user.findOne({ username })
+  ctx.assert(user, '401', 'User not found!')
   const hash = bcrypt.hashSync(password, user.salt)
   ctx.assert(hash === user.password, '401', 'Incorrect password!')
   const token = UUID.create().toString()
