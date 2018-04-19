@@ -2,6 +2,7 @@ const router = require('koa-router')()
 const db = require('../config/mongo')
 const UUID = require('uuid-js')
 const bcrypt = require('bcryptjs')
+const md5 = require('blueimp-md5')
 const _ = require('lodash')
 
 const saltRounds = 10
@@ -15,7 +16,7 @@ const createUser = async (ctx) => {
   const plainUser = ctx.request.body
   const userId = UUID.create().toString()
   const salt = bcrypt.genSaltSync(saltRounds)
-  const hashPassword = bcrypt.hashSync(plainUser.plainPassword, salt)
+  const hashPassword = bcrypt.hashSync(md5(plainUser.plainPassword), salt)
   console.log('salt', salt)
   console.log('hashPassword', hashPassword)
   const user = _.omit({
