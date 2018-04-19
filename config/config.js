@@ -18,20 +18,7 @@ const baseConfig = {
 const platformConfig = {
   development: {
     app: {
-      port: 3000
-    },
-    mongo: {
-      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
-    },
-    redis: {
-      url: '192.168.10.31',
-      port: 6379
-    }
-  },
-
-  test: {
-    app: {
-      port: 3000
+      port: 4000
     },
     mongo: {
       url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
@@ -44,11 +31,24 @@ const platformConfig = {
 
   production: {
     app: {
-      port: process.env.PORT || 3000,
+      port: process.env.PORT || 4000,
       cacheTime: 7 * 24 * 60 * 60 * 1000
     },
     mongo: {
-      url: process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/koan'
+      url: process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
+    },
+    redis: {
+      url: '192.168.10.31',
+      port: 6379
+    }
+  },
+
+  test: {
+    app: {
+      port: 4000
+    },
+    mongo: {
+      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     },
     redis: {
       url: '192.168.10.31',
