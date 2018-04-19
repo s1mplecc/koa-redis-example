@@ -23,7 +23,8 @@
     "koa-router": "^7.1.1",
     "lodash": "^4.17.5",
     "mongodb": "^2.2.33",
-    "uuid-js": "^0.7.5"
+    "uuid-js": "^0.7.5",
+    "uuid-token-generator": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
