@@ -10,7 +10,10 @@ const saltRounds = 10
 /**
  * Create User, Contain username, userId, email,
  * salt generate by bcrypt & password encrypted
- * todo: front-end encrypt plainPassword
+ *
+ * @Code {String} username
+ * @Code {String} plainPassword -> md5 -> bcrypt
+ * @Code {String} email
  */
 const createUser = async (ctx) => {
   const plainUser = ctx.request.body
