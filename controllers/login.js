@@ -1,13 +1,12 @@
 const router = require('koa-router')()
 const db = require('../config/mongo')
-const client = require('../config/redis')
+const redis = require('../config/redis')
 const UUID = require('uuid-js')
 const bcrypt = require('bcryptjs')
 
 /**
  * Check user login & generate access_token
  * set token -> userId hash to redis
- * @code {String} hash: the data encrypted with salt
  */
 const login = async (ctx) => {
   const { username, password } = ctx.request.body
@@ -15,7 +14,7 @@ const login = async (ctx) => {
   ctx.assert(user, '401', 'User not found!')
   ctx.assert(bcrypt.compareSync(password, user.password), '401', 'Incorrect password!')
   const token = bcrypt.hashSync(UUID.create().toString())
-  await client.hmset('access_token', token, user.userId)
+  await redis.hmset('access_token', token, user.userId)
   const { email, userId } = user
   ctx.body = {
     access_token: token,
@@ -29,7 +28,7 @@ const login = async (ctx) => {
 const logout = async (ctx) => {
   const token = ctx.request.header.authorization
   console.log('token', token)
-  await client.hdel('access_token', token)
+  await redis.hdel('access_token', token)
   ctx.body = 'ok'
 }
 
