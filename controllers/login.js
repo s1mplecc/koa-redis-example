@@ -13,8 +13,7 @@ const login = async (ctx) => {
   const { username, password } = ctx.request.body
   const user = await db.user.findOne({ username })
   ctx.assert(user, '401', 'User not found!')
-  const hash = bcrypt.hashSync(password, user.salt)
-  ctx.assert(hash === user.password, '401', 'Incorrect password!')
+  ctx.assert(bcrypt.compareSync(password, user.password), '401', 'Incorrect password!')
   const token = bcrypt.hashSync(UUID.create().toString())
   await client.hmset('access_token', token, user.userId)
   const { email, userId } = user
