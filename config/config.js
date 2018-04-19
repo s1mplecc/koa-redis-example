@@ -24,7 +24,7 @@ const platformConfig = {
       url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     },
     redis: {
-      url: '192.168.10.31',
+      url: '172.20.10.90',
       port: 6379
     }
   },
@@ -51,7 +51,7 @@ const platformConfig = {
       url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     },
     redis: {
-      url: '192.168.10.31',
+      url: '172.20.10.90',
       port: 6379
     }
   }
