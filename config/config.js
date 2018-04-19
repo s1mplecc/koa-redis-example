@@ -24,7 +24,7 @@ const platformConfig = {
       url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     },
     redis: {
-      url: '172.20.10.90',
+      url: '192.168.10.31',
       port: 6379
     }
   },
@@ -37,7 +37,7 @@ const platformConfig = {
       url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
     },
     redis: {
-      url: '172.20.10.90',
+      url: '192.168.10.31',
       port: 6379
     }
   },
@@ -51,7 +51,7 @@ const platformConfig = {
       url: process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/koan'
     },
     redis: {
-      url: '172.20.10.90',
+      url: '192.168.10.31',
       port: 6379
     }
   }
