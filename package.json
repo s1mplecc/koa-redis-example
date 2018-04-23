@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node bin/auth",
-    "dev": "./node_modules/.bin/nodemon bin/auth",
-    "prd": "pm2 start bin/auth",
+    "start": "node bin/www",
+    "dev": "./node_modules/.bin/nodemon bin/www",
+    "prd": "pm2 start bin/www",
     "lint": "eslint --ext .js .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

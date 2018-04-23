@@ -1,5 +1,5 @@
-const login = require('./login')
-const user = require('./user')
-const health = require('./health')
+const string = require('./string')
+const hash = require('./hash')
+const list = require('./list')
 
-module.exports = [login, user, health]
+module.exports = [string, hash, list]

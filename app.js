@@ -6,7 +6,6 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa-cors')
-const mongo = require('./config/mongo')
 
 const controllers = require('./controllers')
 
@@ -20,12 +19,6 @@ app.use(bodyparser({
 }))
 app.use(json({}))
 app.use(logger())
-
-// connect to database
-app.init = async () => {
-  await mongo.connect()
-}
-app.init()
 
 // controllers
 controllers.forEach((controller) => {
