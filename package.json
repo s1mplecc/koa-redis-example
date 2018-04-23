@@ -10,8 +10,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "blueimp-md5": "^2.10.0",
     "debug": "^2.6.3",
     "ioredis": "^3.2.2",
     "koa": "^2.2.0",
@@ -21,10 +19,7 @@
     "koa-logger": "^2.0.1",
     "koa-onerror": "^1.2.1",
     "koa-router": "^7.1.1",
-    "lodash": "^4.17.5",
-    "mongodb": "^2.2.33",
-    "uuid-js": "^0.7.5",
-    "uuid-token-generator": "^1.0.0"
+    "lodash": "^4.17.5"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
