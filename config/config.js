@@ -18,40 +18,31 @@ const baseConfig = {
 const platformConfig = {
   development: {
     app: {
-      port: 4000
-    },
-    mongo: {
-      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
+      port: 3000
     },
     redis: {
-      url: '172.20.10.90',
+      url: '127.0.0.1',
       port: 6379
     }
   },
 
   production: {
     app: {
-      port: process.env.PORT || 4000,
+      port: process.env.PORT || 3000,
       cacheTime: 7 * 24 * 60 * 60 * 1000
     },
-    mongo: {
-      url: process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
-    },
     redis: {
-      url: '192.168.10.31',
+      url: '127.0.0.1',
       port: 6379
     }
   },
 
   test: {
     app: {
-      port: 4000
-    },
-    mongo: {
-      url: 'mongodb://bigdata:bigdata_123@172.20.10.126/bigdata'
+      port: 3000
     },
     redis: {
-      url: '172.20.10.90',
+      url: '127.0.0.1',
       port: 6379
     }
   }
